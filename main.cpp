@@ -12,8 +12,11 @@ void view_active(WINDOW *old_win, WINDOW *new_win, string cover_active, string c
 int main()
 {
     initscr();
-    Players_array players;
-    players.add_player();
+
+    vector<Player> players(2);
+    players.at(0).set_name("tuxflo");
+    players.at(1).set_name("anne");
+
     addstr("How much rows should the board have? ");
     int rows, columns;
     scanw("%d", &rows);
@@ -21,11 +24,13 @@ int main()
     addstr("How much columns should the board have? ");
     scanw("%d", &columns);
     printw("\n");
+    clear();
     Game game(rows, columns, "/home/tuxflo/workspace/QT/Memory_TUI/picures/", "/home/tuxflo/workspace/QT/Memory_TUI/picures/X.txt");
-    game.init_game(players.get_players());
-    addstr("Alles ok!");
-    getch();
+    game.init_game(&players);
     game.view_board();
+    getch();
+    endwin();
+
 }
 
 //    string cover;
