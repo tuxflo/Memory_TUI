@@ -146,6 +146,7 @@ void Game::_play()
                     wrefresh(_status_win);
                     if(_board->check_game_over())
                         _game_over();
+                    _board->end_round();
                 }
                 else
                 {
